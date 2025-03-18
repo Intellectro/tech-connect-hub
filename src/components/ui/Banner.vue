@@ -16,7 +16,7 @@
 </script>
 
 <template>
-    <div class="w-full h-fit px-6 md:px-20 py-12 bg-slate-100 dark:bg-primary relative z-1">
+    <div class="w-full h-fit px-6 md:px-20 py-12 bg-slate-100 dark:bg-primary relative z-1 overflow-x-hidden">
         <div class="flex flex-col lg:flex-row gap-y-4">
             <div class="flex-1 md:flex-[0.4] flex flex-col gap-y-3">
                 <div class="px-6 ring-1 ring-white/10 py-1 text-[13.5px] rounded-full w-fit flex items-center gap-x-2 dark:bg-primary dark:text-slate-100 relative">
