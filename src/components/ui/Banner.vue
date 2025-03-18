@@ -1,11 +1,18 @@
 <script setup>
     import { LaAngleDoubleRightSolid } from '@kalimahapps/vue-icons';
-    import { reactive } from 'vue';
+    import { computed, reactive } from 'vue';
     import { BannerImageGrid } from '..';
+	import { grid } from "../../assets";
+	import { useStore } from 'vuex';
 
     const borderStyled = reactive({
         border: "1px solid rgba(59,130,246,.2)"
     });
+
+	const store = useStore();
+
+	const isThemeStatus = computed(() => store.getters.currentThemeStatus);
+
 </script>
 
 <template>
@@ -34,6 +41,8 @@
             </div>
             <BannerImageGrid class="flex-1 md:flex-[0.6]" />
         </div>
-        <div class="absolute w-[200px] h-[200px] rounded-full blur-[650px] bg-blur-color top-[50%] right-[35%] -z-1"></div>
+        <div v-show="isThemeStatus" class="absolute w-[200px] h-[200px] rounded-full blur-[650px] bg-blur-color top-[50%] right-[35%] -z-1"></div>
+		<img v-show="!isThemeStatus" class="absolute top-0 right-0 -translate-x-[30%] w-full h-full object-cover object-center -z-1" :src="grid" alt="grid" style="mix-blend-mode: color-burn;">
+		<img v-show="!isThemeStatus" class="absolute top-0 right-0 -translate-x-[30%] w-full h-full object-cover object-center -z-1" :src="grid" alt="grid" style="mix-blend-mode: color-burn;">
     </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup>
-    import { Navbar, Banner, Core } from '../components';
+    import { Navbar, Banner, Core, HomeBio, HomeMiniBio } from '../components';
 
 </script>
 
@@ -8,5 +8,7 @@
         <Navbar />
         <Banner />
         <Core />
+		<HomeBio />
+		<HomeMiniBio />
     </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup>
-    import { onUnmounted, ref, onMounted } from "vue";
+    import { onUnmounted, ref, onMounted, inject } from "vue";
     import {reactimg, vueimg, astroimg, nextimg, nuxtimg, expressimg, laravelimg, ionicimg} from "../../assets";
 
     defineOptions({
@@ -21,9 +21,7 @@
         mediaHandler.value.isPhoneView = _media_.matches;
     }
 
-    const extractImageName = (img) => {
-        return img.split('/').pop().split(".")[0]
-    }
+    const extractImageName = inject('image-name-extractor');
 
     onMounted(() => {
         handleMedia();
@@ -41,12 +39,12 @@
             <img v-for="(image, index) in imageHolders" :key="index" :src="image" :alt="image.split('/').pop().split('.')[0]">
         </div>
         <div v-if="mediaHandler.isPhoneView" class="w-full grid grid-cols-3 gap-1">
-            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 rounded-md aspect-[1] col-span-2" :src="reactimg" :alt="extractImageName(reactimg)">
-            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 rounded-md" :src="vueimg" :alt="extractImageName(vueimg)">
-            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 rounded-md" :src="astroimg" :alt="extractImageName(astroimg)">
-            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 rounded-md aspect-[1]  col-span-2" :src="nextimg" :alt="extractImageName(nextimg)">
-            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 rounded-md aspect-[1]  col-span-2" :src="nuxtimg" :alt="extractImageName(nuxtimg)">
-            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 rounded-md" :src="expressimg" :alt="extractImageName(expressimg)">
+            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 active:brightness-100 rounded-md aspect-[1] col-span-2" :src="reactimg" :alt="extractImageName(reactimg)">
+            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 active:brightness-100 rounded-md" :src="vueimg" :alt="extractImageName(vueimg)">
+            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 active:brightness-100 rounded-md" :src="astroimg" :alt="extractImageName(astroimg)">
+            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 active:brightness-100 rounded-md aspect-[1]  col-span-2" :src="nextimg" :alt="extractImageName(nextimg)">
+            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 active:brightness-100 rounded-md aspect-[1]  col-span-2" :src="nuxtimg" :alt="extractImageName(nuxtimg)">
+            <img class="h-[120px] w-full object-contain object-center bg-primary dark:bg-slate-100 brightness-50 hover:brightness-100 active:brightness-100 rounded-md" :src="expressimg" :alt="extractImageName(expressimg)">
         </div>
     </div>
 </template>

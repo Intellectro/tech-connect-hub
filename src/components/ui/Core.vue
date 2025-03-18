@@ -1,9 +1,13 @@
 <script setup>
     import { computed } from 'vue';
-    import store from '../../store';
     import { CoreCard } from '..';
+	import { useStore } from 'vuex';
+
+	const store = useStore();
 
     const core_contents = computed(() => store.getters.handleCoreData);
+
+	const isThemeStatus = computed(() => store.getters.currentThemeStatus);
 </script>
 
 <template>
@@ -14,5 +18,7 @@
                 <CoreCard v-for="(coredata, index) in core_contents" :key="index" v-bind="coredata" />
             </div>
         </div>
+        <span class="absolute top-2/4 left-[50%] -translate-x-[50%] w-[30%] h-[20%] rounded-full bg-blur-color -z-1 blur-[350px]"></span>
+        <span class="absolute top-0 left-[50%] -translate-x-[50%] w-[30%] h-[20%] rounded-full bg-blur-color -z-1 blur-[350px]"></span>
     </div>
 </template>

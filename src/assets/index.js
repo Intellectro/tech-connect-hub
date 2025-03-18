@@ -11,3 +11,6 @@ export {default as nuxtimg} from "./images/nuxtjs.png";
 export {default as expressimg} from "./images/expressjs.jpg";
 export {default as laravelimg} from "./images/laravel.jpg";
 export {default as ionicimg} from "./images/ionic.png";
+export {default as laptopConnect} from "./images/laptop-connect.png";
+export {default as grid} from "./images/grid.jpg";
+export {default as Hexagon} from "./images/bg-hexagon.jpg";

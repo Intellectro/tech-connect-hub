@@ -74,5 +74,41 @@ export default {
             _title: "Personalized Tech Feeds",
             _content: "Receive curated articles, blogs, and news based on your interests and professional goals. Stay ahead in the fast-moving tech world."
         }
-    ]
+    ],
+    features: [
+        {
+            id: 1,
+            _feature: "Smart Tech Networking",
+        },
+        {
+            id: 2,
+            _feature: "Job & Opportunity Hub",
+        },
+        {
+            id: 3,
+            _feature: "Real-time Discussion Forums",
+        },
+        {
+            id: 4,
+            _feature: "Project Collaboration Space",
+        },
+        {
+            id: 5,
+            _feature: "AI-Powered Mentorship Matching",
+        },
+        {
+            id: 6,
+            _feature: "Personalized Tech Feeds",
+        },
+        {
+            id: 7,
+            _feature: "Live Webinars & Tech Events",
+        },
+        {
+            id: 8,
+            _feature: "Dark & Light Mode",
+        }
+    ],
+    isPhoneView: false,
+    isThemeStatus: false,
 };

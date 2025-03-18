@@ -26,7 +26,7 @@
 </script>
 
 <template>
-    <div class="w-full py-3 px-5 relative z-1" :style="borderStyled">
+    <div class="w-full py-3 px-5 relative z-1 rounded-md" :style="borderStyled">
         <div class="flex flex-col gap-y-3">
             <div class="text-[14px] self-center dark:bg-gradient-to-r from-[#0C0E23] to-[#050112] shadow-md -mr-2 mb-4 w-[30px] h-[30px] flex justify-center items-center rounded-full" v-html="_icon"></div>
             <div class="flex flex-col gap-y-1">

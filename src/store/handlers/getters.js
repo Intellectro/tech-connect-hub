@@ -6,4 +6,16 @@ const handleCoreData = (state) => {
     return state.coreContents;
 }
 
-export {routesDataHandler, handleCoreData};
+const currentViewStatus = (state) => {
+    return state.isPhoneView;
+}
+
+const currentThemeStatus = (state) => {
+    return state.isThemeStatus;
+}
+
+const featuresData = (state) => {
+    return state.features;
+} 
+
+export {routesDataHandler, handleCoreData, currentViewStatus, currentThemeStatus, featuresData};

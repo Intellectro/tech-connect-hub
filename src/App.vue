@@ -1,5 +1,12 @@
 <script setup>
-  import { Screen, Scroller, Container } from "./components";
+  import { provide } from "vue";
+	import { Screen, Scroller, Container } from "./components";
+
+  const imageNameExtractor = (image) => {
+	return image.split('/').pop().split('.')[0]
+  };
+
+  provide("image-name-extractor", imageNameExtractor);
 </script>
 
 <template>
