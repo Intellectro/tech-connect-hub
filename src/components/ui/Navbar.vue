@@ -4,6 +4,7 @@
     import { CgMenuRightAlt, CaLightFilled, BsMoonStarsFill } from '@kalimahapps/vue-icons';
 	import { inject } from "vue";
 	import { useStore } from "vuex";
+import { onUnmounted } from "vue";
 
 	const store = useStore();
 
@@ -16,6 +17,8 @@
     const borderStyled = reactive({
         borderBottom: "1px solid rgba(59,130,246,.2)"
     });
+
+	const systemThemeHandler = ref(window.matchMedia("(prefers-color-scheme: dark)"));
 
     const themeToggle = (e) => {
         const themeSelector = e.currentTarget.dataset.themeValue;
@@ -46,6 +49,11 @@
         document.documentElement.className = theme.value.isDarkMode ? 'dark' : '';
     }
 
+	const systemTController = (e) => {
+			theme.value.isDarkMode = e.matches;
+			localStorage.setItem("theme", JSON.stringify(e.matches));
+		}
+
 	const imageExtractor = inject('image-name-extractor');
 
     watch(() => theme.value.isDarkMode, (newValue) => {
@@ -56,7 +64,13 @@
 
     onMounted(() => {
         detectDefaultTheme();
+
+		systemThemeHandler.value.addEventListener("change", systemTController);
     });
+
+	onUnmounted(() => {
+		systemThemeHandler.value.removeEventListener("change", systemTController);
+	});
 
 	onBeforeMount(() => {
 		store.dispatch("isThemeStatusHandler", localStorage.getItem("theme") ? JSON.parse(localStorage.getItem("theme")) : theme.value.isDarkMode);
