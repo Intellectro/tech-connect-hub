@@ -1,6 +1,6 @@
 <script setup>
     import { techLight, techDark } from "../../assets";
-    import { computed, onBeforeMount, onMounted, reactive, ref, watch, inject } from "vue";
+    import { computed, onBeforeMount, onMounted, reactive, ref, watch, inject, onUpdated } from "vue";
     import { CgMenuRightAlt, CaLightFilled, BsMoonStarsFill } from '@kalimahapps/vue-icons';
 	import { useStore } from "vuex";
 	import { onUnmounted } from "vue";
@@ -40,6 +40,7 @@
             }
         localStorage.setItem("theme", JSON.stringify(theme.value.isDarkMode));
         theme.value.themeIsOpen = false;
+		store.dispatch("isThemeStatusHandler", theme.value.isDarkMode);
     }
 
     const toggleOpenThemeController = () => {
@@ -59,7 +60,6 @@
 
     watch(() => theme.value.isDarkMode, (newValue) => {
         document.documentElement.className = newValue ? 'dark' : '';
-		console.log(newValue);
 		store.dispatch("isThemeStatusHandler", newValue);
     });
 
@@ -75,6 +75,15 @@
 
 	onBeforeMount(() => {
 		store.dispatch("isThemeStatusHandler", localStorage.getItem("theme") ? JSON.parse(localStorage.getItem("theme")) : theme.value.isDarkMode);
+		document.documentElement.className = localStorage.getItem('theme') ? (JSON.parse(localStorage.getItem("theme")) ? 'dark' : '') : '';
+	});
+
+	const themeStatus = computed(() => store.getters.currentThemeStatus);
+
+	onUpdated(() => {
+		if (localStorage.getItem("theme")) {
+			document.documentElement.className = JSON.parse(localStorage.getItem("theme")) ? 'dark' : '';
+		}
 	});
 </script>
 
@@ -82,8 +91,8 @@
     <div v-show="limitedReached" class="w-full fixed top-0 left-0 backdrop-blur-[50px] px-6 py-4 md:px-14 shadow-md z-10" :style="borderStyled">
         <div class="w-full flex items-center justify-between">
             <div class="w-[95%] h-[25px] md:w-[60%] md:h-[30px]">
-                <img v-if="!theme.isDarkMode" class="w-full h-full object-contain object-left" :src="techLight" :alt="imageExtractor(techLight)">
-                <img v-if="theme.isDarkMode" class="w-full h-full object-contain object-left" :src="techDark" :alt="imageExtractor(techDark)">
+                <img v-if="!themeStatus" class="w-full h-full object-contain object-left" :src="techLight" :alt="imageExtractor(techLight)">
+                <img v-if="themeStatus" class="w-full h-full object-contain object-left" :src="techDark" :alt="imageExtractor(techDark)">
             </div>
             <div class="flex items-center gap-x-8">
                 <div class="hidden md:flex items-center gap-x-5">
@@ -95,8 +104,8 @@
                     <CgMenuRightAlt />
                 </div>
                 <div class="w-[30px] h-[30px] rounded-sm flex justify-center items-center shadow-md dark:shadow-[0px_0px_4px_rgba(255,255,255,0.3)] dark:text-slate-100" @click="toggleOpenThemeController">
-                    <CaLightFilled v-show="!theme.isDarkMode" />
-                    <BsMoonStarsFill v-show="theme.isDarkMode" />
+                    <CaLightFilled v-show="!themeStatus" />
+                    <BsMoonStarsFill v-show="themeStatus" />
                 </div>
             </div>
         </div>
