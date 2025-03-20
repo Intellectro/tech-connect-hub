@@ -1,8 +1,10 @@
 <script setup>
-  import { provide } from "vue";
-	import { Screen, Scroller, Container, SlideInNav } from "./components";
+  	import { provide } from "vue";
+	import { Screen, Scroller, Container } from "./components";
 
-  const imageNameExtractor = (image) => {
+	import SlideInNav from "./components/main/SlideInNav.vue";
+
+  	const imageNameExtractor = (image) => {
 	return image.split('/').pop().split('.')[0]
   };
 
