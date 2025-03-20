@@ -111,4 +111,31 @@ export default {
     ],
     isPhoneView: false,
     isThemeStatus: false,
+    faqContents: [
+        {
+            id: 1,
+            _title: "What is Tech Connect?",
+            _content: "Tech Connect is a platform designed to connect developers, tech enthusiasts, and industry professionals. Whether you're looking to network, collaborate on projects, find job opportunities, or stay updated with the latest trends, Tech Connect is your go-to hub."
+        },
+        {
+            id: 2,
+            _title: "How can I join Tech Connect?",
+            _content: "Joining Tech Connect is easy! Simply sign up with your email, GitHub, or LinkedIn account. Once registered, you can start exploring communities, job listings, and project collaborations."
+        },
+        {
+            id: 3,
+            _title: "Is Tech Connect free to use?",
+            _content: "Yes! Tech Connect offers a free membership that allows users to connect, share knowledge, and explore job opportunities. However, we may offer premium features in the future for advanced networking and exclusive job listings."
+        },
+        {
+            id: 4,
+            _title: "Can I find job opportunities on Tech Connect?",
+            _content: "Absolutely! We provide a dedicated job board where companies post tech-related job openings. You can filter by skills, location, or remote options to find your ideal role."
+        },
+        {
+            id: 5,
+            _title: "How do I collaborate with other developers?",
+            _content: "Tech Connect enables users to join communities, participate in discussions, and contribute to open-source projects. You can also start or join tech teams for hackathons, freelance gigs, and startup ideas."
+        }
+    ]
 };

@@ -18,4 +18,8 @@ const featuresData = (state) => {
     return state.features;
 } 
 
-export {routesDataHandler, handleCoreData, currentViewStatus, currentThemeStatus, featuresData};
+const faqContentsHandler = (state) => {
+    return state.faqContents
+}
+
+export {routesDataHandler, handleCoreData, currentViewStatus, currentThemeStatus, featuresData, faqContentsHandler};
